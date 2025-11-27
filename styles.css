@@ -1,0 +1,106 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 头部样式 */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #007acc;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.2em;
+}
+
+/* 内容区域样式 */
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+h2 {
+    color: #007acc;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.about p {
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+.skills ul {
+    list-style-type: square;
+    margin-left: 20px;
+}
+
+.skills li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.contact p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.contact a {
+    color: #007acc;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* 底部样式 */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 30px;
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+}
