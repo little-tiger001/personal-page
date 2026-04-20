@@ -3,39 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LittelTiger 的个人主页</title>
+    <title>主页</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>欢迎来到我的个人主页</h1>
-            <p>我是 LittelTiger</p>
+            <button id="theme-btn" class="theme-btn" title="切换主题">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"/>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                </svg>
+            </button>
+            <div class="header__time" id="clock">00:00</div>
+            <div class="header__date" id="date">加载中...</div>
+            <div class="header__name">帅小虎</div>
+            <div class="search">
+                <form id="search-form" class="search__form">
+                    <input type="text" id="search-input" class="search__input" placeholder="搜索或输入网址..." autocomplete="off">
+                    <button type="submit" class="search__btn">搜索</button>
+                </form>
+            </div>
         </header>
-        
-        <section class="about">
-            <h2>关于我</h2>
-            <p>这里可以写一些关于你的介绍...</p>
-        </section>
-        
-        <section class="skills">
-            <h2>技能</h2>
-            <ul>
-                <li>技能 1</li>
-                <li>技能 2</li>
-                <li>技能 3</li>
-            </ul>
-        </section>
-        
-        <section class="contact">
-            <h2>联系方式</h2>
-            <p>Email: your.email@example.com</p>
-            <p>GitHub: <a href="https://github.com/LittelTiger">LittelTiger</a></p>
-        </section>
-        
+
+        <main class="main">
+            <!-- 待办事项 -->
+            <section class="widget widget-todo">
+                <div class="widget-header">
+                    <h3 class="widget-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 11l3 3L22 4"/>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                        </svg>
+                        待办
+                    </h3>
+                    <button id="todo-toggle" class="widget-toggle" title="折叠">−</button>
+                </div>
+                <div class="todo-content" id="todo-content">
+                    <form id="todo-form" class="todo-form">
+                        <input type="text" id="todo-input" placeholder="添加待办事项..." autocomplete="off">
+                        <button type="submit" class="todo-add-btn">+</button>
+                    </form>
+                    <ul id="todo-list" class="todo-list"></ul>
+                </div>
+            </section>
+
+            <!-- 书签分类 -->
+            <section class="widget widget-bookmarks">
+                <div class="widget-header">
+                    <h3 class="widget-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                        </svg>
+                        书签
+                    </h3>
+                    <div class="widget-actions">
+                        <button id="add-category-btn" class="widget-action-btn" title="添加分类">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 5v14M5 12h14"/>
+                            </svg>
+                        </button>
+                        <button id="bookmarks-toggle" class="widget-toggle" title="折叠">−</button>
+                    </div>
+                </div>
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-zone__inner" id="drop-zone-inner">
+                        <div class="drop-zone__icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                        </div>
+                        <p class="drop-zone__text">拖拽网站到此处添加</p>
+                    </div>
+                </div>
+                <div id="categories-container" class="categories-container"></div>
+            </section>
+        </main>
+
         <footer class="footer">
-            <p>&copy; 2025 LittelTiger. 保留所有权利。</p>
+            <p>主页 · 简洁高效</p>
         </footer>
     </div>
+
+    <!-- 添加分类弹窗 -->
+    <div id="category-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="category-modal-title">添加分类</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="category-form">
+                <div class="form-group">
+                    <label>分类名称</label>
+                    <input type="text" id="category-name" placeholder="例如：社交媒体" required>
+                </div>
+                <div class="form-group">
+                    <label>分类图标（可选）</label>
+                    <input type="text" id="category-icon" placeholder="输入 emoji 或颜色代码">
+                </div>
+                <input type="hidden" id="edit-category-index">
+                <button type="submit" class="form-submit">保存</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 添加书签弹窗 -->
+    <div id="bookmark-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="bookmark-modal-title">添加网站</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="bookmark-form">
+                <div class="form-group">
+                    <label>网站名称</label>
+                    <input type="text" id="site-name" placeholder="例如：GitHub" required>
+                </div>
+                <div class="form-group">
+                    <label>网址</label>
+                    <input type="url" id="site-url" placeholder="https://github.com" required>
+                </div>
+                <div class="form-group">
+                    <label>图标地址（可选）</label>
+                    <input type="url" id="site-icon" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>所属分类</label>
+                    <select id="site-category" class="form-select"></select>
+                </div>
+                <input type="hidden" id="edit-bookmark-index">
+                <input type="hidden" id="edit-bookmark-category">
+                <button type="submit" class="form-submit">保存</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
