@@ -1,0 +1,5 @@
+:8080 {
+    root * /home/admin/personal-page/public
+    encode gzip zstd
+    file_server
+}

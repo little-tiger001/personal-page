@@ -1,0 +1,171 @@
+{{- define "main" }}
+
+{{- $category := .Title }}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">{{ .Description | markdownify }}</div>
+  {{- end }}
+</header>
+{{- end }}
+
+<style>
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.gallery-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.gallery-cover {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--cover-bg, linear-gradient(135deg, #667eea, #764ba2));
+}
+.gallery-cover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+.gallery-body {
+  padding: 1rem 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.gallery-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: var(--primary);
+}
+.gallery-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+.gallery-rating {
+  background: #ffd60a;
+  color: #1a1a1a;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.gallery-year {
+  opacity: 0.8;
+}
+.gallery-with {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin-bottom: 0.6rem;
+}
+.gallery-summary {
+  font-size: 0.9rem;
+  color: var(--secondary);
+  line-height: 1.5;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.gallery-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.6rem;
+}
+.gallery-tag {
+  font-size: 0.7rem;
+  background: var(--code-bg);
+  color: var(--secondary);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+.gallery-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+</style>
+
+{{- $pages := where .RegularPages "Section" "gallery" }}
+
+{{- if eq (len $pages) 0 }}
+<p style="text-align:center;color:var(--secondary);padding:3rem 0;">
+  还没看过什么呢 🥲
+</p>
+{{- else }}
+<div class="gallery-grid">
+  {{- range $pages }}
+  {{- $gradient := .Params.cover_gradient | default "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" }}
+  {{- $emoji := .Params.cover_emoji | default "📚" }}
+  {{- $rating := .Params.rating | default 0 }}
+  {{- $year := .Params.year | default "" }}
+  {{- $watched_with := .Params.watched_with | default "" }}
+
+  <article class="gallery-card">
+    <a class="gallery-link" href="{{ .Permalink }}" aria-label="{{ .Title }}"></a>
+    <div class="gallery-cover" style="--cover-bg: {{ $gradient | safeCSS }}">
+      <span style="position:relative;z-index:1">{{ $emoji }}</span>
+    </div>
+    <div class="gallery-body">
+      <h3 class="gallery-title">{{ .Title }}</h3>
+      <div class="gallery-meta">
+        {{- if gt $rating 0 }}
+        <span class="gallery-rating">★ {{ $rating }}</span>
+        {{- end }}
+        {{- if $year }}
+        <span class="gallery-year">{{ $year }}</span>
+        {{- end }}
+      </div>
+      {{- if $watched_with }}
+      <div class="gallery-with">👥 和 {{ $watched_with }} 一起</div>
+      {{- end }}
+      {{- if .Summary }}
+      <div class="gallery-summary">{{ .Summary | plainify | htmlUnescape }}</div>
+      {{- end }}
+      {{- with .Params.tags }}
+      <div class="gallery-tags">
+        {{- range . }}
+        <span class="gallery-tag">#{{ . }}</span>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </article>
+  {{- end }}
+</div>
+{{- end }}
+
+{{- end }}
