@@ -1,0 +1,130 @@
+baseURL = "https://little-tiger001.github.io/personal-page/"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh-cn"
+title = "帅小虎的博客"
+theme = "PaperMod"
+
+# 作者信息
+[params]
+  env = "production"
+  description = "记录生活、技术、还有爱"
+  keywords = ["博客", "技术", "生活", "随笔", "帅小虎"]
+  author = "帅小虎"
+  DateFormat = "2006-01-02"
+  defaultTheme = "auto"  # 跟随系统深色/浅色
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInMenu = true
+  disableSpecial1stPost = false  # 关闭特殊首篇处理，让所有文章都显示为普通 post-entry
+  ShowToc = true
+  TocOpen = false
+  mainSections = ["posts"]  # PaperMod 必需：指定主页文章来源
+
+# 菜单
+[[menu.main]]
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "文章"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  name = "归档"
+  url = "/archives/"
+  weight = 3
+
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 4
+
+[[menu.main]]
+  name = "友链"
+  url = "/links/"
+  weight = 5
+
+# 社交链接
+[[params.socialIcons]]
+  name = "github"
+  title = "GitHub"
+  url = "https://github.com/little-tiger001"
+
+[[params.socialIcons]]
+  name = "email"
+  title = "邮箱"
+  url = "mailto:i@47.100.21.148"
+
+# 输出
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML", "RSS"]
+  term = ["HTML", "RSS"]
+
+# 标记语言
+[markup]
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    tabWidth = 2
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+# 永久链接：about 和 links 用根路径
+[[permalinks]]
+  from = "/about"
+  to = "/about/"
+
+[[permalinks]]
+  from = "/links"
+  to = "/links/"
+
+# 中文文章 slug 改用 ascii
+[permalinks.posts]
+  posts = "/posts/:slug/"
+
+# 主题参数（PaperMod 特有）
+[params.assets]
+  favicon = "/favicon.svg"
+  favicon16x16 = "/favicon-16x16.png"
+  favicon32x32 = "/favicon-32x32.png"
+  apple_touch_icon = "/apple-touch-icon.png"
+
+[params.cover]
+  hidden = true
+  hiddenInList = false
+  hiddenInSingle = false
+
+# 主页模式：列出所有文章
+
+# 列表页设置
+[params.list]
+  showSummary = true
+  showCards = true
+  cardView = false  # 紧凑列表，比卡片模式信息密度高
+
+
+
+# 友链
+[[params.links]]
+  title = "GitHub"
+  href = "https://github.com/little-tiger001"
+  icon = "github"
+
+[[params.links]]
+  title = "小爪 AI 助手"
+  href = "http://47.100.21.148:3001"
+  icon = "robot"
