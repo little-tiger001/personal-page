@@ -9,6 +9,7 @@ cover_emoji: "☀"
 cover_color: "#ffd60a"
 cover_gradient: "linear-gradient(135deg, #ffd60a 0%, #003566 100%)"
 tags: ["周杰伦", "流行", "青春", "校园"]
+mood: "😊"
 ---
 
 # 晴天

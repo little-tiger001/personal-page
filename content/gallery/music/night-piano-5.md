@@ -9,6 +9,7 @@ cover_emoji: "🎹"
 cover_color: "#2d3047"
 cover_gradient: "linear-gradient(135deg, #2d3047 0%, #93b7be 100%)"
 tags: ["钢琴", "石进", "纯音乐", "夜晚"]
+mood: "🌿"
 ---
 
 # 夜的钢琴曲五

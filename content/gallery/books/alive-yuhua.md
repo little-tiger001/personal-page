@@ -9,6 +9,7 @@ cover_emoji: "🌾"
 cover_color: "#d4a373"
 cover_gradient: "linear-gradient(135deg, #d4a373 0%, #faedcd 100%)"
 tags: ["余华", "小说", "中国当代", "苦难"]
+mood: "😢"
 ---
 
 # 活着

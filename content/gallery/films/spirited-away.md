@@ -9,6 +9,7 @@ cover_emoji: "🏮"
 cover_color: "#e63946"
 cover_gradient: "linear-gradient(135deg, #e63946 0%, #f1a208 50%, #fff3b0 100%)"
 tags: ["宫崎骏", "动画", "成长", "奇幻"]
+mood: "🌿"
 ---
 
 # 千与千寻

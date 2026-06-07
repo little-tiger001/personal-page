@@ -9,6 +9,7 @@ cover_emoji: "🌌"
 cover_color: "#1a1a2e"
 cover_gradient: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)"
 tags: ["科幻", "诺兰", "父女", "时间"]
+mood: "💭"
 ---
 
 # 星际穿越 (Interstellar)

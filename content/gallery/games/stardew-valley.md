@@ -9,6 +9,7 @@ cover_emoji: "🌻"
 cover_color: "#ffb703"
 cover_gradient: "linear-gradient(135deg, #ffb703 0%, #fb8500 50%, #8ecae6 100%)"
 tags: ["种田", "独立游戏", "像素", "慢生活"]
+mood: "😊"
 ---
 
 # 星露谷物语

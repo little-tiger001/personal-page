@@ -9,6 +9,7 @@ cover_emoji: "🗡"
 cover_color: "#2a9d8f"
 cover_gradient: "linear-gradient(135deg, #2a9d8f 0%, #e9c46a 50%, #f4a261 100%)"
 tags: ["任天堂", "开放世界", "RPG", "神作"]
+mood: "⚡"
 ---
 
 # 塞尔达传说：旷野之息

@@ -9,6 +9,7 @@ cover_emoji: "💻"
 cover_color: "#003049"
 cover_gradient: "linear-gradient(135deg, #003049 0%, #669bbc 100%)"
 tags: ["计算机", "CSAPP", "技术", "基础"]
+mood: "💭"
 ---
 
 # 深入理解计算机系统 (CSAPP)
